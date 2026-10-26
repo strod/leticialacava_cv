@@ -4,3 +4,6 @@
 mockups/
 docs/
 *.pdf
+!/assets/leticia-la-cava-cv.pdf
+tmp/
+__pycache__/
