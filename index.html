@@ -811,7 +811,7 @@
 
         .timeline-content {
             background: var(--bg);
-            padding: 28px;
+            padding: 0;
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -843,6 +843,56 @@
             font-size: 0.9rem;
             color: var(--text-light);
             line-height: 1.65;
+        }
+
+
+        .timeline-summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 28px;
+            border-radius: var(--radius-md);
+        }
+
+        .timeline-summary::-webkit-details-marker { display: none; }
+
+        .timeline-summary:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        .timeline-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .timeline-toggle svg { transition: transform 0.2s ease; }
+        .timeline-collapse { display: none; }
+        .timeline-content[open] .timeline-expand { display: none; }
+        .timeline-content[open] .timeline-collapse { display: inline; }
+        .timeline-content[open] .timeline-toggle svg { transform: rotate(180deg); }
+
+        .timeline-details {
+            margin: 0 28px;
+            padding: 20px 0 28px;
+            border-top: 1px solid var(--sage-light);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            overflow-wrap: anywhere;
+        }
+
+        .timeline-details p { margin-bottom: 14px; }
+        .timeline-details .timeline-context { font-style: italic; }
+        .timeline-details ul { padding-left: 20px; }
+        .timeline-details li + li { margin-top: 10px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-content, .timeline-toggle svg { transition: none; }
         }
 
         /* ========== SKILLS ========== */
@@ -1757,8 +1807,13 @@
                 left: -36px;
             }
 
-            .timeline-content {
+            .timeline-summary {
                 padding: 20px;
+            }
+
+            .timeline-details {
+                margin: 0 20px;
+                padding-bottom: 20px;
             }
         }
     </style>
@@ -1980,6 +2035,36 @@
                 <p class="section-subtitle" data-i18n="exp_subtitle">From multinational consumer goods companies to independent consulting.</p>
             </div>
             <div class="timeline">
+                <!-- Levaco Brasil -->
+                <div class="timeline-item fade-in-left">
+                    <div class="timeline-marker">
+                        <svg class="timeline-leaf" viewBox="0 0 24 28" fill="none">
+                            <path d="M12 2 C6 6, 2 14, 6 22 C8 26, 16 26, 18 22 C22 14, 18 6, 12 2Z" fill="#8EA68B" opacity="0.6"/>
+                            <path d="M12 2 C12 10, 10 18, 8 24" stroke="#2D4A3E" stroke-width="1" fill="none" opacity="0.4"/>
+                        </svg>
+                    </div>
+                    <span data-i18n="exp0_date" class="timeline-date">2026 — Present</span>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp0_title">Supply and Financial Analytics</h3>
+                            <span data-i18n="exp0_company" class="timeline-company">Levaco Brasil Ltda.</span>
+                            <p data-i18n="exp0_desc">Built the analytics function from scratch for a chemicals distributor. Connected demand, inventory, imports, and costs into purchase planning. Developed shipment-level costing and BRL/EUR performance reporting, presenting insights directly to Brazilian and German leadership.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <p data-i18n="exp0_context" class="timeline-context">Brazilian subsidiary of Levaco Chemicals GmbH, Germany</p>
+                            <p data-i18n="exp0_intro">Built the analytical function from scratch for a supply-and-demand-driven chemicals distribution business, from data model to the recommendations presented to the executive committee.</p>
+                            <ul>
+                                <li data-i18n="exp0_detail1">Designed the planning model that connects sales forecasts by rep, inventory position across third-party warehouses, import lead times and landed cost into a single purchase plan.</li>
+                                <li data-i18n="exp0_detail2">Ran root-cause analysis on monthly performance, decomposing variances into demand, cost, FX and accounting-treatment drivers and presented findings directly to the German CFO, the group controller and the Brazilian general director.</li>
+                                <li data-i18n="exp0_detail3">Rebuilt the cost model at shipment × SKU granularity: logistics and clearing expenses allocated by weight, tax gross-up, net cost per kilo.</li>
+                                <li data-i18n="exp0_detail4">Designed the monthly performance package in BRL and EUR, with FX decomposition that separates operating performance from currency effect for the German parent.</li>
+                                <li data-i18n="exp0_detail5">Defined the analytical roadmap independently, with no prior BI function, reporting line or data infrastructure in place.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
                 <!-- Timeline Item 1 -->
                 <div class="timeline-item fade-in-left">
                     <div class="timeline-marker">
@@ -1989,11 +2074,23 @@
                         </svg>
                     </div>
                     <span class="timeline-date" data-i18n="exp1_date">Jun 2021 — Present</span>
-                    <div class="timeline-content">
-                        <h3 data-i18n="exp1_title">Freelance Consultant</h3>
-                        <span class="timeline-company" data-i18n="exp1_company">Data Analytics &amp; Visualization</span>
-                        <p data-i18n="exp1_desc">Builds dashboards using Power BI, Google Data Studio, BigQuery, and SQL. Delivers insights across Sales, Digital Marketing, and Supply Chain. Automates processes using Python, Excel, and Apps Script. Over 20 projects completed with top ratings across Workana and Upwork.</p>
-                    </div>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp1_title">Freelance Consultant</h3>
+                            <span class="timeline-company" data-i18n="exp1_company">Data Analytics &amp; Visualization</span>
+                            <p data-i18n="exp1_desc">Builds dashboards using Power BI, Google Data Studio, BigQuery, and SQL. Delivers insights across Sales, Digital Marketing, and Supply Chain. Automates processes using Python, Excel, and Apps Script. Over 20 projects completed with top ratings across Workana and Upwork.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <ul>
+                                <li data-i18n="exp1_detail1">Builds dashboards using Power BI, Google Data Studio, Google BigQuery, SQL, Supermetrics, and MS Excel.</li>
+                                <li data-i18n="exp1_detail2">Delivers data insights across Sales, Digital Marketing, and Supply Chain for clients on Workana, Upwork, and through direct engagements. Over 20 projects completed with top ratings.</li>
+                                <li data-i18n="exp1_detail3">Automates business processes using Python, MS Excel, and Google Apps Script.</li>
+                                <li data-i18n="exp1_detail4">Implements Google BigQuery and creates marketing dashboards using YouTube, Facebook, Google, and Active Campaign data.</li>
+                                <li data-i18n="exp1_detail5">Builds automated data pipelines integrating Outlook, SharePoint, and Power BI, and develops web scrapers using Python, JavaScript, and APIs.</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
                 <!-- Timeline Item 2 -->
                 <div class="timeline-item fade-in-left">
@@ -2004,11 +2101,23 @@
                         </svg>
                     </div>
                     <span class="timeline-date" data-i18n="exp2_date">Sep 2019 — Jun 2021</span>
-                    <div class="timeline-content">
-                        <h3 data-i18n="exp2_title">Demand Planning Coordinator</h3>
-                        <span class="timeline-company" data-i18n="exp2_company">Reckitt Benckiser</span>
-                        <p data-i18n="exp2_desc">Led S&amp;OP optimization across the organization. Built the entire BI area from scratch, establishing data-driven decision-making processes. Recipient of the "Struggling for Excellence" award. Participated in an AI-powered forecasting project to improve demand accuracy.</p>
-                    </div>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp2_title">Demand Planning Coordinator</h3>
+                            <span class="timeline-company" data-i18n="exp2_company">Reckitt Benckiser</span>
+                            <p data-i18n="exp2_desc">Led S&amp;OP optimization across the organization. Built the entire BI area from scratch, establishing data-driven decision-making processes. Recipient of the "Struggling for Excellence" award. Participated in an AI-powered forecasting project to improve demand accuracy.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <ul>
+                                <li data-i18n="exp2_detail1">Led regional S&amp;OP cycle optimization, time series analysis, and inventory optimization.</li>
+                                <li data-i18n="exp2_detail2">Analyzed sell-out, sell-in, stock, market share, price elasticity, and promotion calendars.</li>
+                                <li data-i18n="exp2_detail3">Built the BI area from scratch, developing and automating supply chain dashboards and processes using Power BI and Python.</li>
+                                <li data-i18n="exp2_detail4">Participated in an AI forecasting project that improved service level and forecast accuracy.</li>
+                                <li data-i18n="exp2_detail5">Received the “Struggling for Excellence” award.</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
                 <!-- Timeline Item 3 -->
                 <div class="timeline-item fade-in-left">
@@ -2019,11 +2128,22 @@
                         </svg>
                     </div>
                     <span class="timeline-date" data-i18n="exp3_date">Oct 2018 — Sep 2019</span>
-                    <div class="timeline-content">
-                        <h3 data-i18n="exp3_title">Supply Chain Analyst</h3>
-                        <span class="timeline-company" data-i18n="exp3_company">L'Oreal</span>
-                        <p data-i18n="exp3_desc">Implemented the retail S&amp;OP cycle for the division. Led the Demand Planning BI cell, standardizing reporting and analytics. Developed a forecasting tool that significantly improved demand accuracy across product lines.</p>
-                    </div>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp3_title">Supply Chain Analyst</h3>
+                            <span class="timeline-company" data-i18n="exp3_company">L'Oreal</span>
+                            <p data-i18n="exp3_desc">Implemented the retail S&amp;OP cycle for the division. Led the Demand Planning BI cell, standardizing reporting and analytics. Developed a forecasting tool that significantly improved demand accuracy across product lines.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <ul>
+                                <li data-i18n="exp3_detail1">Implemented the retail S&amp;OP cycle for the division.</li>
+                                <li data-i18n="exp3_detail2">Managed forecasting and inventory processes.</li>
+                                <li data-i18n="exp3_detail3">Led the Demand Planning BI cell, standardizing reporting and analytics.</li>
+                                <li data-i18n="exp3_detail4">Developed a new forecasting tool that improved forecast accuracy.</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
                 <!-- Timeline Item 4 -->
                 <div class="timeline-item fade-in-left">
@@ -2034,11 +2154,22 @@
                         </svg>
                     </div>
                     <span class="timeline-date" data-i18n="exp4_date">Sep 2017 — Oct 2018</span>
-                    <div class="timeline-content">
-                        <h3 data-i18n="exp4_title">Supply Chain Analyst</h3>
-                        <span class="timeline-company" data-i18n="exp4_company">Technos Group</span>
-                        <p data-i18n="exp4_desc">Managed international suppliers and procurement processes. Developed a Balanced Scorecard (BSC) tool for performance tracking. Led Supply Chain PDCA initiatives to continuously improve operational efficiency.</p>
-                    </div>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp4_title">Supply Chain Analyst</h3>
+                            <span class="timeline-company" data-i18n="exp4_company">Technos Group</span>
+                            <p data-i18n="exp4_desc">Managed international suppliers and procurement processes. Developed a Balanced Scorecard (BSC) tool for performance tracking. Led Supply Chain PDCA initiatives to continuously improve operational efficiency.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <ul>
+                                <li data-i18n="exp4_detail1">Managed international supplier relationships and procurement processes.</li>
+                                <li data-i18n="exp4_detail2">Developed a Balanced Scorecard (BSC) tool to evaluate supplier performance.</li>
+                                <li data-i18n="exp4_detail3">Led Supply Chain PDCA initiatives to improve operational efficiency.</li>
+                                <li data-i18n="exp4_detail4">Designed supply chain finance strategies to reduce the cash conversion cycle and performed financial forecasting.</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
                 <!-- Timeline Item 5 -->
                 <div class="timeline-item fade-in-left">
@@ -2049,15 +2180,27 @@
                         </svg>
                     </div>
                     <span class="timeline-date" data-i18n="exp5_date">Jun 2016 — Oct 2018</span>
-                    <div class="timeline-content">
-                        <h3 data-i18n="exp5_title">Media Finance Intern</h3>
-                        <span class="timeline-company" data-i18n="exp5_company">L'Oreal</span>
-                        <p data-i18n="exp5_desc">Managed media investments and budget tracking for multiple brands. Achieved a 70% reduction in processing time through VBA and SQL automation, transforming manual workflows into streamlined, repeatable processes.</p>
-                    </div>
+                    <details class="timeline-content">
+                        <summary class="timeline-summary">
+                            <h3 data-i18n="exp5_title">Media Finance Intern</h3>
+                            <span class="timeline-company" data-i18n="exp5_company">L'Oreal</span>
+                            <p data-i18n="exp5_desc">Managed media investments and budget tracking for multiple brands. Achieved a 70% reduction in processing time through VBA and SQL automation, transforming manual workflows into streamlined, repeatable processes.</p>
+                            <span class="timeline-toggle"><span class="timeline-expand" data-i18n="exp_expand">View details</span><span class="timeline-collapse" data-i18n="exp_collapse">Show less</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+                        </summary>
+                        <div class="timeline-details">
+                            <ul>
+                                <li data-i18n="exp5_detail1">Managed media investments and budget tracking for multiple brands.</li>
+                                <li data-i18n="exp5_detail2">Optimized processes using VBA and SQL, reducing time spent on repetitive activities by 70%.</li>
+                                <li data-i18n="exp5_detail3">Implemented a media investment management tool.</li>
+                                <li data-i18n="exp5_detail4">Analyzed media contracts and KPIs.</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- ========== SKILLS ========== -->
     <section class="skills" id="skills">
@@ -2704,6 +2847,41 @@
                     svc8_title: 'Web Scraping & Data Collection',
                     svc8_desc: 'Automated scrapers using Python, JavaScript, and APIs.',
                     // Experience
+                    exp_expand: "View details",
+                    exp_collapse: "Show less",
+                    exp0_date: "2026 — Present",
+                    exp0_title: "Supply and Financial Analytics",
+                    exp0_company: "Levaco Brasil Ltda.",
+                    exp0_desc: "Built the analytics function from scratch for a chemicals distributor. Connected demand, inventory, imports, and costs into purchase planning. Developed shipment-level costing and BRL/EUR performance reporting, presenting insights directly to Brazilian and German leadership.",
+                    exp0_context: "Brazilian subsidiary of Levaco Chemicals GmbH, Germany",
+                    exp0_intro: "Built the analytical function from scratch for a supply-and-demand-driven chemicals distribution business, from data model to the recommendations presented to the executive committee.",
+                    exp0_detail1: "Designed the planning model that connects sales forecasts by rep, inventory position across third-party warehouses, import lead times and landed cost into a single purchase plan.",
+                    exp0_detail2: "Ran root-cause analysis on monthly performance, decomposing variances into demand, cost, FX and accounting-treatment drivers and presented findings directly to the German CFO, the group controller and the Brazilian general director.",
+                    exp0_detail3: "Rebuilt the cost model at shipment × SKU granularity: logistics and clearing expenses allocated by weight, tax gross-up, net cost per kilo.",
+                    exp0_detail4: "Designed the monthly performance package in BRL and EUR, with FX decomposition that separates operating performance from currency effect for the German parent.",
+                    exp0_detail5: "Defined the analytical roadmap independently, with no prior BI function, reporting line or data infrastructure in place.",
+                    exp1_detail1: "Builds dashboards using Power BI, Google Data Studio, Google BigQuery, SQL, Supermetrics, and MS Excel.",
+                    exp1_detail2: "Delivers data insights across Sales, Digital Marketing, and Supply Chain for clients on Workana, Upwork, and through direct engagements. Over 20 projects completed with top ratings.",
+                    exp1_detail3: "Automates business processes using Python, MS Excel, and Google Apps Script.",
+                    exp1_detail4: "Implements Google BigQuery and creates marketing dashboards using YouTube, Facebook, Google, and Active Campaign data.",
+                    exp1_detail5: "Builds automated data pipelines integrating Outlook, SharePoint, and Power BI, and develops web scrapers using Python, JavaScript, and APIs.",
+                    exp2_detail1: "Led regional S&OP cycle optimization, time series analysis, and inventory optimization.",
+                    exp2_detail2: "Analyzed sell-out, sell-in, stock, market share, price elasticity, and promotion calendars.",
+                    exp2_detail3: "Built the BI area from scratch, developing and automating supply chain dashboards and processes using Power BI and Python.",
+                    exp2_detail4: "Participated in an AI forecasting project that improved service level and forecast accuracy.",
+                    exp2_detail5: "Received the “Struggling for Excellence” award.",
+                    exp3_detail1: "Implemented the retail S&OP cycle for the division.",
+                    exp3_detail2: "Managed forecasting and inventory processes.",
+                    exp3_detail3: "Led the Demand Planning BI cell, standardizing reporting and analytics.",
+                    exp3_detail4: "Developed a new forecasting tool that improved forecast accuracy.",
+                    exp4_detail1: "Managed international supplier relationships and procurement processes.",
+                    exp4_detail2: "Developed a Balanced Scorecard (BSC) tool to evaluate supplier performance.",
+                    exp4_detail3: "Led Supply Chain PDCA initiatives to improve operational efficiency.",
+                    exp4_detail4: "Designed supply chain finance strategies to reduce the cash conversion cycle and performed financial forecasting.",
+                    exp5_detail1: "Managed media investments and budget tracking for multiple brands.",
+                    exp5_detail2: "Optimized processes using VBA and SQL, reducing time spent on repetitive activities by 70%.",
+                    exp5_detail3: "Implemented a media investment management tool.",
+                    exp5_detail4: "Analyzed media contracts and KPIs.",
                     exp_label: 'Career Path',
                     exp_title: 'Experience',
                     exp_subtitle: 'From multinational consumer goods companies to independent consulting.',
@@ -2832,6 +3010,41 @@
                     svc8_title: 'Web Scraping & Coleta de Dados',
                     svc8_desc: 'Scrapers automatizados usando Python, JavaScript e APIs.',
                     // Experience
+                    exp_expand: "Ver detalhes",
+                    exp_collapse: "Ver menos",
+                    exp0_date: "2026 — Presente",
+                    exp0_title: "Análise de Suprimentos e Finanças",
+                    exp0_company: "Levaco Brasil Ltda.",
+                    exp0_desc: "Estruturou do zero a função de analytics de uma distribuidora de produtos químicos. Integrou demanda, estoques, importações e custos ao planejamento de compras. Desenvolveu custeio por embarque e relatórios em BRL/EUR, apresentando análises à liderança brasileira e alemã.",
+                    exp0_context: "Subsidiária brasileira da Levaco Chemicals GmbH, Alemanha",
+                    exp0_intro: "Estruturou do zero a função analítica de uma distribuidora de produtos químicos orientada por oferta e demanda, desde o modelo de dados até as recomendações apresentadas ao comitê executivo.",
+                    exp0_detail1: "Desenhou o modelo de planejamento que conecta previsões de vendas por representante, posição de estoque em armazéns terceirizados, prazos de importação e custo total de importação em um único plano de compras.",
+                    exp0_detail2: "Realizou análises de causa raiz do desempenho mensal, decompondo desvios em fatores de demanda, custo, câmbio e tratamento contábil, e apresentou os resultados diretamente ao CFO alemão, ao controller do grupo e ao diretor-geral brasileiro.",
+                    exp0_detail3: "Reconstruiu o modelo de custos na granularidade embarque × SKU: despesas de logística e desembaraço rateadas por peso, gross-up de impostos e custo líquido por quilo.",
+                    exp0_detail4: "Desenhou o pacote mensal de desempenho em BRL e EUR, com decomposição cambial que separa o desempenho operacional do efeito da moeda para a matriz alemã.",
+                    exp0_detail5: "Definiu de forma independente o roadmap analítico, sem função de BI, linha de reporte ou infraestrutura de dados previamente estabelecidas.",
+                    exp1_detail1: "Cria dashboards com Power BI, Google Data Studio, Google BigQuery, SQL, Supermetrics e MS Excel.",
+                    exp1_detail2: "Entrega insights em Vendas, Marketing Digital e Supply Chain para clientes no Workana, Upwork e em contratos diretos. Mais de 20 projetos concluídos com excelentes avaliações.",
+                    exp1_detail3: "Automatiza processos com Python, MS Excel e Google Apps Script.",
+                    exp1_detail4: "Implementa Google BigQuery e cria dashboards de marketing com dados do YouTube, Facebook, Google e Active Campaign.",
+                    exp1_detail5: "Constrói pipelines automatizados integrando Outlook, SharePoint e Power BI e desenvolve web scrapers com Python, JavaScript e APIs.",
+                    exp2_detail1: "Liderou a otimização regional do ciclo de S&OP, análises de séries temporais e otimização de estoques.",
+                    exp2_detail2: "Analisou sell-out, sell-in, estoques, participação de mercado, elasticidade de preços e calendários promocionais.",
+                    exp2_detail3: "Construiu a área de BI do zero, desenvolvendo e automatizando dashboards e processos de Supply Chain com Power BI e Python.",
+                    exp2_detail4: "Participou de um projeto de previsão com IA que melhorou o nível de serviço e a acurácia das previsões.",
+                    exp2_detail5: "Recebeu o prêmio “Struggling for Excellence”.",
+                    exp3_detail1: "Implementou o ciclo de S&OP de varejo da divisão.",
+                    exp3_detail2: "Gerenciou processos de previsão e estoques.",
+                    exp3_detail3: "Liderou a célula de BI de Planejamento de Demanda, padronizando relatórios e análises.",
+                    exp3_detail4: "Desenvolveu uma nova ferramenta de previsão que melhorou a acurácia.",
+                    exp4_detail1: "Gerenciou relacionamentos com fornecedores internacionais e processos de compras.",
+                    exp4_detail2: "Desenvolveu uma ferramenta Balanced Scorecard (BSC) para avaliar o desempenho de fornecedores.",
+                    exp4_detail3: "Liderou iniciativas de PDCA em Supply Chain para melhorar a eficiência operacional.",
+                    exp4_detail4: "Desenhou estratégias financeiras de Supply Chain para reduzir o ciclo de conversão de caixa e realizou previsões financeiras.",
+                    exp5_detail1: "Gerenciou investimentos em mídia e o acompanhamento de orçamento de várias marcas.",
+                    exp5_detail2: "Otimizou processos com VBA e SQL, reduzindo em 70% o tempo gasto em atividades repetitivas.",
+                    exp5_detail3: "Implementou uma ferramenta de gestão de investimentos em mídia.",
+                    exp5_detail4: "Analisou contratos de mídia e KPIs.",
                     exp_label: 'Trajet\u00f3ria',
                     exp_title: 'Experi\u00eancia',
                     exp_subtitle: 'De multinacionais de bens de consumo \u00e0 consultoria independente.',
@@ -2960,6 +3173,41 @@
                     svc8_title: 'Web Scraping y Recopilaci\u00f3n de Datos',
                     svc8_desc: 'Scrapers automatizados usando Python, JavaScript y APIs.',
                     // Experience
+                    exp_expand: "Ver detalles",
+                    exp_collapse: "Ver menos",
+                    exp0_date: "2026 — Presente",
+                    exp0_title: "Análisis de Suministro y Finanzas",
+                    exp0_company: "Levaco Brasil Ltda.",
+                    exp0_desc: "Creó desde cero la función de analytics de una distribuidora de productos químicos. Integró demanda, inventario, importaciones y costos en la planificación de compras. Desarrolló el costeo por embarque e informes en BRL/EUR, presentando análisis a la dirección brasileña y alemana.",
+                    exp0_context: "Filial brasileña de Levaco Chemicals GmbH, Alemania",
+                    exp0_intro: "Creó desde cero la función analítica de una distribuidora de productos químicos orientada por la oferta y la demanda, desde el modelo de datos hasta las recomendaciones presentadas al comité ejecutivo.",
+                    exp0_detail1: "Diseñó el modelo de planificación que conecta previsiones de ventas por representante, inventario en almacenes de terceros, plazos de importación y costo total de importación en un único plan de compras.",
+                    exp0_detail2: "Realizó análisis de causa raíz del desempeño mensual, descomponiendo las variaciones en factores de demanda, costos, tipo de cambio y tratamiento contable, y presentó los hallazgos directamente al CFO alemán, al controller del grupo y al director general brasileño.",
+                    exp0_detail3: "Reconstruyó el modelo de costos con granularidad embarque × SKU: gastos de logística y despacho aduanero asignados por peso, gross-up de impuestos y costo neto por kilo.",
+                    exp0_detail4: "Diseñó el paquete mensual de desempeño en BRL y EUR, con una descomposición cambiaria que separa el desempeño operativo del efecto de la moneda para la matriz alemana.",
+                    exp0_detail5: "Definió de forma independiente la hoja de ruta analítica, sin función de BI, línea de reporte ni infraestructura de datos previas.",
+                    exp1_detail1: "Crea dashboards con Power BI, Google Data Studio, Google BigQuery, SQL, Supermetrics y MS Excel.",
+                    exp1_detail2: "Entrega insights en Ventas, Marketing Digital y Cadena de Suministro para clientes en Workana, Upwork y mediante contratos directos. Más de 20 proyectos completados con excelentes valoraciones.",
+                    exp1_detail3: "Automatiza procesos con Python, MS Excel y Google Apps Script.",
+                    exp1_detail4: "Implementa Google BigQuery y crea dashboards de marketing con datos de YouTube, Facebook, Google y Active Campaign.",
+                    exp1_detail5: "Construye pipelines automatizados que integran Outlook, SharePoint y Power BI y desarrolla web scrapers con Python, JavaScript y APIs.",
+                    exp2_detail1: "Lideró la optimización regional del ciclo S&OP, el análisis de series temporales y la optimización de inventarios.",
+                    exp2_detail2: "Analizó sell-out, sell-in, inventario, cuota de mercado, elasticidad de precios y calendarios promocionales.",
+                    exp2_detail3: "Construyó el área de BI desde cero, desarrollando y automatizando dashboards y procesos de Cadena de Suministro con Power BI y Python.",
+                    exp2_detail4: "Participó en un proyecto de pronóstico con IA que mejoró el nivel de servicio y la precisión de las previsiones.",
+                    exp2_detail5: "Recibió el premio “Struggling for Excellence”.",
+                    exp3_detail1: "Implementó el ciclo S&OP de retail de la división.",
+                    exp3_detail2: "Gestionó los procesos de pronóstico e inventario.",
+                    exp3_detail3: "Lideró la célula de BI de Planificación de Demanda, estandarizando informes y análisis.",
+                    exp3_detail4: "Desarrolló una nueva herramienta de pronóstico que mejoró la precisión.",
+                    exp4_detail1: "Gestionó las relaciones con proveedores internacionales y los procesos de compras.",
+                    exp4_detail2: "Desarrolló una herramienta Balanced Scorecard (BSC) para evaluar el desempeño de proveedores.",
+                    exp4_detail3: "Lideró iniciativas PDCA en Cadena de Suministro para mejorar la eficiencia operativa.",
+                    exp4_detail4: "Diseñó estrategias financieras de Cadena de Suministro para reducir el ciclo de conversión de efectivo y realizó previsiones financieras.",
+                    exp5_detail1: "Gestionó inversiones en medios y el seguimiento de presupuestos de varias marcas.",
+                    exp5_detail2: "Optimizó procesos con VBA y SQL, reduciendo un 70% el tiempo dedicado a actividades repetitivas.",
+                    exp5_detail3: "Implementó una herramienta de gestión de inversiones en medios.",
+                    exp5_detail4: "Analizó contratos de medios y KPIs.",
                     exp_label: 'Trayectoria',
                     exp_title: 'Experiencia',
                     exp_subtitle: 'De multinacionales de bienes de consumo a consultor\u00eda independiente.',
