@@ -1,0 +1,263 @@
+{
+  "en": {
+    "headline": "Data Analytics & Data Visualization Consultant",
+    "location": "São Paulo, Brazil",
+    "summary_heading": "Professional Summary",
+    "summary": "Industrial engineer and data analytics consultant with 7+ years of experience turning business data into dashboards, automated processes, and actionable insights. Experience across chemicals distribution, consumer goods, sales, digital marketing, and supply chain at Levaco Brasil, Reckitt Benckiser, and L'Oreal. Delivered 20+ freelance projects; rated 4.95/5 on Workana and 5.0/5 on Upwork.",
+    "skills_heading": "Technical Skills",
+    "skills": [
+      ["Business intelligence", "Power BI, DAX, Power Query (M), Looker Studio (Google Data Studio), Excel, Google Sheets"],
+      ["Data and analytics", "SQL, Google BigQuery, Python (Pandas, NumPy, Matplotlib), data modeling, ETL, Supermetrics"],
+      ["Automation and integration", "VBA, Google Apps Script, APIs, web scraping, JavaScript, Outlook, SharePoint"],
+      ["Business domains", "Sales and marketing analytics, financial analysis, S&OP, demand planning, forecasting, inventory optimization"]
+    ],
+    "experience_heading": "Professional Experience",
+    "experience_continued": "Professional Experience (continued)",
+    "jobs": [
+      {
+        "title": "Supply and Financial Analytics",
+        "company": "Levaco Brasil Ltda.",
+        "dates": "2026 - Present",
+        "bullets": [
+          "Built the analytics function from scratch for the Brazilian subsidiary of Levaco Chemicals GmbH, Germany.",
+          "Designed purchase planning connecting sales forecasts, third-party warehouse inventory, import lead times, and landed costs.",
+          "Rebuilt shipment-level and SKU-level costing, allocating logistics and clearing expenses by weight, tax gross-up, and net cost per kilo.",
+          "Developed monthly BRL/EUR performance reporting with FX decomposition. Presented demand, cost, FX, and accounting variance analysis to Brazilian and German leadership."
+        ]
+      },
+      {
+        "title": "Data Analytics & Visualization Consultant",
+        "company": "Freelance",
+        "dates": "Jun 2021 - Present",
+        "bullets": [
+          "Delivered 20+ projects across sales, digital marketing, and supply chain, building dashboards with Power BI, Looker Studio, BigQuery, SQL, Supermetrics, and Excel.",
+          "Automated business processes using Python, Excel, and Google Apps Script; built data pipelines integrating Outlook, SharePoint, and Power BI.",
+          "Implemented BigQuery, developed web scrapers and API integrations, and built marketing dashboards using YouTube, Facebook, Google, and Active Campaign data."
+        ]
+      },
+      {
+        "title": "Demand Planning Coordinator",
+        "company": "Reckitt Benckiser",
+        "dates": "Sep 2019 - Jun 2021",
+        "bullets": [
+          "Led regional Sales and Operations Planning (S&OP) cycle optimization, time series analysis, and inventory optimization.",
+          "Built the BI area from scratch and automated supply chain dashboards and processes using Power BI and Python.",
+          "Analyzed sell-in, sell-out, stock, market share, price elasticity, and promotion calendars. Participated in an AI forecasting project that improved service level and forecast accuracy.",
+          "Received the \"Struggling for Excellence\" award."
+        ]
+      },
+      {
+        "title": "Supply Chain Analyst",
+        "company": "L'Oreal",
+        "dates": "Oct 2018 - Sep 2019",
+        "bullets": [
+          "Implemented the division's retail S&OP cycle and managed forecasting and inventory processes.",
+          "Led the Demand Planning BI cell, standardized reporting and analytics, and developed a forecasting tool that improved forecast accuracy."
+        ]
+      },
+      {
+        "title": "Supply Chain Analyst",
+        "company": "Technos Group",
+        "dates": "Sep 2017 - Oct 2018",
+        "bullets": [
+          "Managed international suppliers and procurement; developed a Balanced Scorecard (BSC) to evaluate supplier performance.",
+          "Led supply chain PDCA initiatives, designed finance strategies to reduce the cash conversion cycle, and performed financial forecasting."
+        ]
+      },
+      {
+        "title": "Media Finance Intern",
+        "company": "L'Oreal",
+        "dates": "Jun 2016 - Oct 2018",
+        "bullets": [
+          "Managed media investment and budget tracking for multiple brands; implemented a media investment management tool and analyzed media contracts and KPIs.",
+          "Automated repetitive processes using VBA and SQL, reducing processing time by 70%."
+        ]
+      }
+    ],
+    "education_heading": "Education",
+    "education": [
+      [
+        "MicroMasters Program in Supply Chain Management",
+        "MIT via edX | Jun 2021 - Present (in progress)"
+      ],
+      [
+        "Bachelor's Degree in Industrial Engineering",
+        "CEFET | 2012 - 2017"
+      ]
+    ],
+    "languages_heading": "Languages",
+    "languages": "Portuguese: Native | English: Advanced / Professional",
+    "footer": "Curriculum Vitae",
+    "subject": "Professional experience, technical skills, education, and languages"
+  },
+  "pt": {
+    "headline": "Consultora de Análise e Visualização de Dados",
+    "location": "São Paulo, Brasil",
+    "summary_heading": "Resumo Profissional",
+    "summary": "Engenheira industrial e consultora de dados com mais de 7 anos de experiência na criação de dashboards, automação de processos e análises para decisões de negócio. Atuação em distribuição de produtos químicos, bens de consumo, vendas, marketing digital e supply chain na Levaco Brasil, Reckitt Benckiser e L'Oreal. Mais de 20 projetos freelance entregues; avaliações de 4,95/5 no Workana e 5,0/5 no Upwork.",
+    "skills_heading": "Competências Técnicas",
+    "skills": [
+      ["Business intelligence", "Power BI, DAX, Power Query (M), Looker Studio (Google Data Studio), Excel, Google Sheets"],
+      ["Dados e análise", "SQL, Google BigQuery, Python (Pandas, NumPy, Matplotlib), modelagem de dados, ETL, Supermetrics"],
+      ["Automação e integração", "VBA, Google Apps Script, APIs, web scraping, JavaScript, Outlook, SharePoint"],
+      ["Áreas de atuação", "Análise de vendas e marketing, análise financeira, S&OP, planejamento de demanda, previsão e otimização de estoques"]
+    ],
+    "experience_heading": "Experiência Profissional",
+    "experience_continued": "Experiência Profissional (continuação)",
+    "jobs": [
+      {
+        "title": "Análise de Suprimentos e Finanças",
+        "company": "Levaco Brasil Ltda.",
+        "dates": "2026 - Presente",
+        "bullets": [
+          "Estruturou do zero a função de analytics da subsidiária brasileira da Levaco Chemicals GmbH, Alemanha.",
+          "Desenhou o planejamento de compras integrando previsões de vendas, estoques em armazéns de terceiros, prazos de importação e custo total de importação.",
+          "Reconstruiu o custeio por embarque e SKU, rateando despesas de logística e desembaraço por peso, gross-up de impostos e custo líquido por quilo.",
+          "Desenvolveu relatórios mensais em BRL/EUR com decomposição cambial. Apresentou análises de variações de demanda, custos, câmbio e tratamento contábil à liderança brasileira e alemã."
+        ]
+      },
+      {
+        "title": "Consultora de Análise e Visualização de Dados",
+        "company": "Freelance",
+        "dates": "Jun 2021 - Presente",
+        "bullets": [
+          "Entregou mais de 20 projetos em vendas, marketing digital e supply chain, criando dashboards com Power BI, Looker Studio, BigQuery, SQL, Supermetrics e Excel.",
+          "Automatizou processos com Python, Excel e Google Apps Script; criou pipelines de dados integrando Outlook, SharePoint e Power BI.",
+          "Implementou BigQuery, desenvolveu web scrapers e integrações com APIs e criou dashboards de marketing com dados do YouTube, Facebook, Google e Active Campaign."
+        ]
+      },
+      {
+        "title": "Coordenadora de Planejamento de Demanda",
+        "company": "Reckitt Benckiser",
+        "dates": "Set 2019 - Jun 2021",
+        "bullets": [
+          "Liderou a otimização regional do ciclo de planejamento de vendas e operações (S&OP), a análise de séries temporais e a otimização de estoques.",
+          "Estruturou a área de BI do zero e automatizou dashboards e processos de supply chain usando Power BI e Python.",
+          "Analisou sell-in, sell-out, estoques, participação de mercado, elasticidade de preços e calendários promocionais. Participou de projeto de previsão com IA que melhorou o nível de serviço e a acurácia das previsões.",
+          "Recebeu o prêmio \"Struggling for Excellence\"."
+        ]
+      },
+      {
+        "title": "Analista de Supply Chain",
+        "company": "L'Oreal",
+        "dates": "Out 2018 - Set 2019",
+        "bullets": [
+          "Implementou o ciclo S&OP de varejo da divisão e gerenciou os processos de previsão e estoque.",
+          "Liderou a célula de BI de Planejamento de Demanda, padronizou relatórios e análises e desenvolveu uma ferramenta que melhorou a acurácia das previsões."
+        ]
+      },
+      {
+        "title": "Analista de Supply Chain",
+        "company": "Grupo Technos",
+        "dates": "Set 2017 - Out 2018",
+        "bullets": [
+          "Gerenciou fornecedores internacionais e compras; desenvolveu um Balanced Scorecard (BSC) para avaliar o desempenho dos fornecedores.",
+          "Liderou iniciativas de PDCA em supply chain, desenhou estratégias financeiras para reduzir o ciclo de conversão de caixa e realizou previsões financeiras."
+        ]
+      },
+      {
+        "title": "Estagiária de Finanças de Mídia",
+        "company": "L'Oreal",
+        "dates": "Jun 2016 - Out 2018",
+        "bullets": [
+          "Gerenciou investimentos em mídia e orçamentos de várias marcas; implementou uma ferramenta de gestão de investimentos e analisou contratos de mídia e KPIs.",
+          "Automatizou processos repetitivos com VBA e SQL, reduzindo o tempo de processamento em 70%."
+        ]
+      }
+    ],
+    "education_heading": "Formação Acadêmica",
+    "education": [
+      ["Programa MicroMasters em Gestão da Cadeia de Suprimentos", "MIT via edX | Jun 2021 - Presente (em andamento)"],
+      ["Bacharelado em Engenharia Industrial", "CEFET | 2012 - 2017"]
+    ],
+    "languages_heading": "Idiomas",
+    "languages": "Português: Nativo | Inglês: Avançado / Profissional",
+    "footer": "Currículo",
+    "subject": "Experiência profissional, competências técnicas, formação acadêmica e idiomas"
+  },
+  "es": {
+    "headline": "Consultora de Análisis y Visualización de Datos",
+    "location": "São Paulo, Brasil",
+    "summary_heading": "Perfil Profesional",
+    "summary": "Ingeniera industrial y consultora de datos con más de 7 años de experiencia creando dashboards, automatizando procesos y generando análisis para la toma de decisiones. Experiencia en distribución de productos químicos, bienes de consumo, ventas, marketing digital y cadena de suministro en Levaco Brasil, Reckitt Benckiser y L'Oreal. Más de 20 proyectos freelance entregados; valoraciones de 4,95/5 en Workana y 5,0/5 en Upwork.",
+    "skills_heading": "Competencias Técnicas",
+    "skills": [
+      ["Business intelligence", "Power BI, DAX, Power Query (M), Looker Studio (Google Data Studio), Excel, Google Sheets"],
+      ["Datos y análisis", "SQL, Google BigQuery, Python (Pandas, NumPy, Matplotlib), modelado de datos, ETL, Supermetrics"],
+      ["Automatización e integración", "VBA, Google Apps Script, APIs, web scraping, JavaScript, Outlook, SharePoint"],
+      ["Áreas de especialización", "Análisis de ventas y marketing, análisis financiero, S&OP, planificación de demanda, pronósticos y optimización de inventarios"]
+    ],
+    "experience_heading": "Experiencia Profesional",
+    "experience_continued": "Experiencia Profesional (continuación)",
+    "jobs": [
+      {
+        "title": "Análisis de Suministro y Finanzas",
+        "company": "Levaco Brasil Ltda.",
+        "dates": "2026 - Presente",
+        "bullets": [
+          "Creó desde cero la función de analytics de la filial brasileña de Levaco Chemicals GmbH, Alemania.",
+          "Diseñó la planificación de compras integrando previsiones de ventas, inventarios en almacenes de terceros, plazos de importación y costo total de importación.",
+          "Reconstruyó el costeo por embarque y SKU, asignando gastos de logística y despacho aduanero por peso, gross-up de impuestos y costo neto por kilo.",
+          "Desarrolló informes mensuales en BRL/EUR con descomposición cambiaria. Presentó análisis de variaciones de demanda, costos, tipo de cambio y tratamiento contable a la dirección brasileña y alemana."
+        ]
+      },
+      {
+        "title": "Consultora de Análisis y Visualización de Datos",
+        "company": "Freelance",
+        "dates": "Jun 2021 - Presente",
+        "bullets": [
+          "Entregó más de 20 proyectos de ventas, marketing digital y cadena de suministro, creando dashboards con Power BI, Looker Studio, BigQuery, SQL, Supermetrics y Excel.",
+          "Automatizó procesos con Python, Excel y Google Apps Script; creó pipelines de datos integrando Outlook, SharePoint y Power BI.",
+          "Implementó BigQuery, desarrolló web scrapers e integraciones con APIs y creó dashboards de marketing con datos de YouTube, Facebook, Google y Active Campaign."
+        ]
+      },
+      {
+        "title": "Coordinadora de Planificación de Demanda",
+        "company": "Reckitt Benckiser",
+        "dates": "Sep 2019 - Jun 2021",
+        "bullets": [
+          "Lideró la optimización regional del ciclo de planificación de ventas y operaciones (S&OP), el análisis de series temporales y la optimización de inventarios.",
+          "Creó el área de BI desde cero y automatizó dashboards y procesos de cadena de suministro con Power BI y Python.",
+          "Analizó sell-in, sell-out, inventarios, cuota de mercado, elasticidad de precios y calendarios promocionales. Participó en un proyecto de pronóstico con IA que mejoró el nivel de servicio y la precisión de las previsiones.",
+          "Recibió el premio \"Struggling for Excellence\"."
+        ]
+      },
+      {
+        "title": "Analista de Cadena de Suministro",
+        "company": "L'Oreal",
+        "dates": "Oct 2018 - Sep 2019",
+        "bullets": [
+          "Implementó el ciclo S&OP de retail de la división y gestionó los procesos de pronóstico e inventario.",
+          "Lideró la célula de BI de Planificación de Demanda, estandarizó informes y análisis y desarrolló una herramienta que mejoró la precisión de las previsiones."
+        ]
+      },
+      {
+        "title": "Analista de Cadena de Suministro",
+        "company": "Grupo Technos",
+        "dates": "Sep 2017 - Oct 2018",
+        "bullets": [
+          "Gestionó proveedores internacionales y compras; desarrolló un Balanced Scorecard (BSC) para evaluar el desempeño de los proveedores.",
+          "Lideró iniciativas PDCA en cadena de suministro, diseñó estrategias financieras para reducir el ciclo de conversión de efectivo y realizó previsiones financieras."
+        ]
+      },
+      {
+        "title": "Pasante de Finanzas de Medios",
+        "company": "L'Oreal",
+        "dates": "Jun 2016 - Oct 2018",
+        "bullets": [
+          "Gestionó inversiones en medios y presupuestos de varias marcas; implementó una herramienta de gestión de inversiones y analizó contratos de medios y KPIs.",
+          "Automatizó procesos repetitivos con VBA y SQL, reduciendo el tiempo de procesamiento en un 70%."
+        ]
+      }
+    ],
+    "education_heading": "Formación Académica",
+    "education": [
+      ["Programa MicroMasters en Gestión de la Cadena de Suministro", "MIT vía edX | Jun 2021 - Presente (en curso)"],
+      ["Grado en Ingeniería Industrial", "CEFET | 2012 - 2017"]
+    ],
+    "languages_heading": "Idiomas",
+    "languages": "Portugués: Nativo | Inglés: Avanzado / Profesional",
+    "footer": "Currículum Vitae",
+    "subject": "Experiencia profesional, competencias técnicas, formación académica e idiomas"
+  }
+}

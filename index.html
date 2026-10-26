@@ -1880,9 +1880,9 @@
                     </a>
                     <a href="#portfolio" class="btn btn-secondary" data-i18n="hero_btn_projects">See My Projects</a>
                 </div>
-                <a href="./assets/leticia-la-cava-cv.pdf" class="btn btn-secondary cv-download" download="Leticia-La-Cava-CV.pdf" type="application/pdf">
+                <a href="./assets/leticia-la-cava-cv.pdf" class="btn btn-secondary cv-download" download="Leticia-La-Cava-CV.pdf" type="application/pdf" hreflang="en">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                    <span data-i18n="cv_download">Download CV (PDF, English)</span>
+                    <span data-i18n="cv_download">Download CV (PDF)</span>
                 </a>
             </div>
             <div class="hero-photo-wrapper fade-in-right">
@@ -2613,9 +2613,9 @@
                         Send Me a Message
                     </a>
                     <br>
-                    <a href="./assets/leticia-la-cava-cv.pdf" class="btn btn-secondary cv-download" download="Leticia-La-Cava-CV.pdf" type="application/pdf">
+                    <a href="./assets/leticia-la-cava-cv.pdf" class="btn btn-secondary cv-download" download="Leticia-La-Cava-CV.pdf" type="application/pdf" hreflang="en">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                        <span data-i18n="cv_download">Download CV (PDF, English)</span>
+                        <span data-i18n="cv_download">Download CV (PDF)</span>
                     </a>
                 </div>
                 <div class="contact-platforms">
@@ -2830,7 +2830,7 @@
                     hero_text: 'Transforming raw data into clear, actionable insights. 7+ years helping businesses make smarter decisions through powerful dashboards, analytics, and automation.',
                     hero_btn_work: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Work With Me',
                     hero_btn_projects: 'See My Projects',
-                    cv_download: 'Download CV (PDF, English)',
+                    cv_download: 'Download CV (PDF)',
                     // About
                     about_label: 'About Me',
                     about_title: 'Turning Data Into Decisions',
@@ -2994,7 +2994,7 @@
                     hero_text: 'Transformando dados brutos em insights claros e acion\u00e1veis. Mais de 7 anos ajudando empresas a tomar decis\u00f5es mais inteligentes.',
                     hero_btn_work: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Trabalhe Comigo',
                     hero_btn_projects: 'Veja Meus Projetos',
-                    cv_download: 'Baixar currículo (PDF, inglês)',
+                    cv_download: 'Baixar currículo (PDF)',
                     // About
                     about_label: 'Sobre Mim',
                     about_title: 'Transformando Dados em Decis\u00f5es',
@@ -3158,7 +3158,7 @@
                     hero_text: 'Transformando datos en bruto en insights claros y accionables. M\u00e1s de 7 a\u00f1os ayudando a empresas a tomar decisiones m\u00e1s inteligentes.',
                     hero_btn_work: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Trabaja Conmigo',
                     hero_btn_projects: 'Ver Mis Proyectos',
-                    cv_download: 'Descargar CV (PDF, inglés)',
+                    cv_download: 'Descargar CV (PDF)',
                     // About
                     about_label: 'Sobre M\u00ed',
                     about_title: 'Transformando Datos en Decisiones',
@@ -3314,6 +3314,14 @@
             function setLanguage(lang) {
                 if (!translations[lang]) lang = 'en';
                 var t = translations[lang];
+
+                // Keep both PDF downloads aligned with the active site language.
+                var cvSuffix = lang === 'en' ? '' : '-' + lang;
+                document.querySelectorAll('.cv-download').forEach(function(link) {
+                    link.setAttribute('href', './assets/leticia-la-cava-cv' + cvSuffix + '.pdf');
+                    link.setAttribute('download', 'Leticia-La-Cava-CV' + cvSuffix.toUpperCase() + '.pdf');
+                    link.setAttribute('hreflang', lang);
+                });
 
                 // Update textContent elements
                 document.querySelectorAll('[data-i18n]').forEach(function(el) {

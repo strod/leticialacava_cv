@@ -1,10 +1,13 @@
-"""Rebuild the downloadable CV: python3 -m pip install reportlab; python3 scripts/generate_cv.py.
+"""Rebuild CVs: python3 -m pip install reportlab; python3 scripts/generate_cv.py.
 
-Content is curated from index.html, the original CV, and docs/context.md.
-Keep employment dates, education status, and skills aligned with those sources.
+Pass language codes (en pt es) to regenerate only selected versions.
+Localized content lives in cv_content.json, curated from index.html,
+the original CV, and docs/context.md. Keep dates and skills aligned.
 Bundled OFL fonts match the website; generation requires no network access.
 """
 
+import argparse
+import json
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -19,7 +22,7 @@ from reportlab.platypus import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "assets" / "leticia-la-cava-cv.pdf"
+CONTENT = json.loads((Path(__file__).with_name("cv_content.json")).read_text(encoding="utf-8"))
 GREEN = colors.HexColor("#2D4A3E")
 TERRACOTTA = colors.HexColor("#A85C3C")
 MUTED = colors.HexColor("#4A6B5D")
@@ -27,7 +30,10 @@ WARM = colors.HexColor("#FAF7F2")
 SAGE = colors.HexColor("#B8CCAF")
 
 
-def generate():
+def generate(language):
+    content = CONTENT[language]
+    suffix = "" if language == "en" else f"-{language}"
+    output = ROOT / "assets" / f"leticia-la-cava-cv{suffix}.pdf"
     for name, filename in (
         ("Space", "SpaceGrotesk-Regular.ttf"),
         ("SpaceBold", "SpaceGrotesk-SemiBold.ttf"),
@@ -79,74 +85,31 @@ def generate():
 
     story.extend([
         p("Leticia La Cava", "name"),
-        p("Data Analytics & Data Visualization Consultant", "headline"),
-        p('São Paulo, Brazil | <link href="mailto:leticiamlacava@gmail.com">'
+        p(content["headline"], "headline"),
+        p(escape(content["location"]) + ' | <link href="mailto:leticiamlacava@gmail.com">'
           'leticiamlacava@gmail.com</link> | +55 21 98645-2911', "contact", True),
         p('<link href="https://leticialacava.me">leticialacava.me</link> | '
           '<link href="https://www.linkedin.com/in/leticia-la-cava/">'
           'linkedin.com/in/leticia-la-cava</link>', "contact", True),
     ])
-    section("Professional Summary")
-    story.append(p(
-        "Industrial engineer and data analytics consultant with 7+ years of experience "
-        "turning business data into dashboards, automated processes, and actionable insights. "
-        "Experience across chemicals distribution, consumer goods, sales, digital marketing, "
-        "and supply chain at Levaco Brasil, Reckitt Benckiser, and L'Oreal. "
-        "Delivered 20+ freelance projects; rated 4.95/5 on Workana and 5.0/5 on Upwork."
-    ))
-    section("Technical Skills")
-    for label, skills in [
-        ("Business intelligence", "Power BI, DAX, Power Query (M), Looker Studio (Google Data Studio), Excel, Google Sheets"),
-        ("Data and analytics", "SQL, Google BigQuery, Python (Pandas, NumPy, Matplotlib), data modeling, ETL, Supermetrics"),
-        ("Automation and integration", "VBA, Google Apps Script, APIs, web scraping, JavaScript, Outlook, SharePoint"),
-        ("Business domains", "Sales and marketing analytics, financial analysis, S&OP, demand planning, forecasting, inventory optimization"),
-    ]:
+    section(content["summary_heading"])
+    story.append(p(content["summary"]))
+    section(content["skills_heading"])
+    for label, skills in content["skills"]:
         story.append(p(f"<b>{escape(label)}:</b> {escape(skills)}", markup=True))
 
-    section("Professional Experience")
-    job("Supply and Financial Analytics", "Levaco Brasil Ltda.", "2026 - Present", [
-        "Built the analytics function from scratch for the Brazilian subsidiary of Levaco Chemicals GmbH, Germany.",
-        "Designed purchase planning connecting sales forecasts, third-party warehouse inventory, import lead times, and landed costs.",
-        "Rebuilt shipment-level and SKU-level costing, allocating logistics and clearing expenses by weight, tax gross-up, and net cost per kilo.",
-        "Developed monthly BRL/EUR performance reporting with FX decomposition. Presented demand, cost, FX, and accounting variance analysis to Brazilian and German leadership.",
-    ])
-    job("Data Analytics & Visualization Consultant", "Freelance", "Jun 2021 - Present", [
-        "Delivered 20+ projects across sales, digital marketing, and supply chain, building dashboards with Power BI, Looker Studio, BigQuery, SQL, Supermetrics, and Excel.",
-        "Automated business processes using Python, Excel, and Google Apps Script; built data pipelines integrating Outlook, SharePoint, and Power BI.",
-        "Implemented BigQuery, developed web scrapers and API integrations, and built marketing dashboards using YouTube, Facebook, Google, and Active Campaign data.",
-    ])
+    section(content["experience_heading"])
+    for index, entry in enumerate(content["jobs"]):
+        if index == 2:
+            story.append(PageBreak())
+            section(content["experience_continued"])
+        job(entry["title"], entry["company"], entry["dates"], entry["bullets"])
 
-    story.append(PageBreak())
-    section("Professional Experience (continued)")
-    job("Demand Planning Coordinator", "Reckitt Benckiser", "Sep 2019 - Jun 2021", [
-        "Led regional Sales and Operations Planning (S&OP) cycle optimization, time series analysis, and inventory optimization.",
-        "Built the BI area from scratch and automated supply chain dashboards and processes using Power BI and Python.",
-        "Analyzed sell-in, sell-out, stock, market share, price elasticity, and promotion calendars. Participated in an AI forecasting project that improved service level and forecast accuracy.",
-        'Received the "Struggling for Excellence" award.',
-    ])
-    job("Supply Chain Analyst", "L'Oreal", "Oct 2018 - Sep 2019", [
-        "Implemented the division's retail S&OP cycle and managed forecasting and inventory processes.",
-        "Led the Demand Planning BI cell, standardized reporting and analytics, and developed a forecasting tool that improved forecast accuracy.",
-    ])
-    job("Supply Chain Analyst", "Technos Group", "Sep 2017 - Oct 2018", [
-        "Managed international suppliers and procurement; developed a Balanced Scorecard (BSC) to evaluate supplier performance.",
-        "Led supply chain PDCA initiatives, designed finance strategies to reduce the cash conversion cycle, and performed financial forecasting.",
-    ])
-    job("Media Finance Intern", "L'Oreal", "Jun 2016 - Oct 2018", [
-        "Managed media investment and budget tracking for multiple brands; implemented a media investment management tool and analyzed media contracts and KPIs.",
-        "Automated repetitive processes using VBA and SQL, reducing processing time by 70%.",
-    ])
-
-    section("Education")
-    story.extend([
-        p("MicroMasters Program in Supply Chain Management", "role"),
-        p("MIT via edX | Jun 2021 - Present (in progress)", "body"),
-        Spacer(1, 5),
-        p("Bachelor's Degree in Industrial Engineering", "role"),
-        p("CEFET | 2012 - 2017", "body"),
-    ])
-    section("Languages")
-    story.append(p("Portuguese: Native | English: Advanced / Professional"))
+    section(content["education_heading"])
+    for title, institution in content["education"]:
+        story.extend([p(title, "role"), p(institution), Spacer(1, 5)])
+    section(content["languages_heading"])
+    story.append(p(content["languages"]))
 
     def decorate(canvas, doc):
         width, height = A4
@@ -161,21 +124,27 @@ def generate():
         canvas.line(46, 36, width - 46, 36)
         canvas.setFillColor(MUTED)
         canvas.setFont("Space", 8)
-        canvas.drawString(46, 23, "Leticia La Cava | Curriculum Vitae")
+        canvas.drawString(46, 23, f"Leticia La Cava | {content['footer']}")
         canvas.drawRightString(width - 46, 23, str(doc.page))
         canvas.restoreState()
 
     doc = SimpleDocTemplate(
-        str(OUTPUT), pagesize=A4, rightMargin=46, leftMargin=46,
+        str(output), pagesize=A4, rightMargin=46, leftMargin=46,
         topMargin=36, bottomMargin=48,
-        title="Leticia La Cava - Data Analytics & Visualization CV",
+        title=f"Leticia La Cava - {content['headline']}",
         author="Leticia La Cava",
-        subject="Professional experience, technical skills, education, and languages",
-        lang="en", pageCompression=1,
+        subject=content["subject"],
+        lang=language, pageCompression=1,
     )
     doc.build(story, onFirstPage=decorate, onLaterPages=decorate)
-    print(f"Generated {OUTPUT}")
+    print(f"Generated {output}")
 
 
 if __name__ == "__main__":
-    generate()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("languages", nargs="*", help="Languages to regenerate: en pt es (default: all)")
+    args = parser.parse_args()
+    if any(language not in CONTENT for language in args.languages):
+        parser.error("Supported languages: en pt es")
+    for language in args.languages or CONTENT:
+        generate(language)
