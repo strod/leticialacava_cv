@@ -5,5 +5,7 @@ mockups/
 docs/
 *.pdf
 !/assets/leticia-la-cava-cv.pdf
+!/assets/leticia-la-cava-cv-pt.pdf
+!/assets/leticia-la-cava-cv-es.pdf
 tmp/
 __pycache__/
